@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const TWIX = 0, EGG = 1, TWIZZLER =2, AIRHEAD =3, RINGPOP = 4;
+        function initialize()
+        {
+            numTwixOutput = document.getElementById('numtwix');
+            numScreamEggsOutput = document.getElementById('numeggs');
+            numTwizzlesrOutput = document.getElementById('numtwizzlers');
+            numAirheadsOutput = document.getElementById('numairheads');
+            numRingPopsOutput = document.getElementById('numringpops');
+            candyLogOutput = document.getElementById('candylog');
+
+            numTwix  = parseInt(Math.random()*11); //generate 0 to 10 candies
+            numScreamEggs  = parseInt(Math.random()*11);
+            numTwizzlers  = parseInt(Math.random()*11);
+            numAirheads  = parseInt(Math.random()*11);
+            numRingPops  = parseInt(Math.random()*11);
+
+            candyLog = '';
+            
+            display();
+        }
+
+        function giveCandy()
+        {
+            var badSelection = true;
+            
+
+            while (badSelection){
+            var selectedCandy = parseInt(Math.random() * 5);
+            if(selectedCandy == TWIX)
+            {
+                if(numTwix>0)
+                {
+                numTwix--;
+                candyLog = "you gave out a twix.<br />" + candyLog
+                badSelection = false;
+                }
+                else{
+                    candyLog= "you trid to gave out a twix but had none.<br />" + candyLog
+                }
+            }
+            else if(selectedCandy == EGG)
+            {
+                if(numScreamEggs>0)
+                {
+                    numScreamEggs--;
+                    candyLog= "you gave out an egg.<br />" + candyLog
+                }
+               else{
+                    candyLog= "you trid to gave out an twix but had none.<br />" + candyLog
+               }
+            }
+            else if(selectedCandy == TWIZZLER)
+            {
+                if(numTwizzlers>0)
+                {
+                    numTwizzlers--;
+                    candyLog= "you gave out a twizzler.<br />" + candyLog
+                }
+               else{
+                    candyLog= "you trid to gave out a twizzler but had none.<br />" + candyLog
+               }
+            }
+            else if(selectedCandy == AIRHEAD)
+            {
+                if(numAirheads>0)
+                {
+                    numAirheads--;
+                    candyLog= "you gave out a airhead.<br />" + candyLog
+                }
+               else{
+                    candyLog= "you trid to gave out an airhead but had none.<br />" + candyLog
+               }
+            }
+            else if(selectedCandy == RINGPOP)
+            {
+                if(numRingPops>0)
+                {
+                    numRingPops--;
+                    candyLog= "you gave out a ringpop.<br />" + candyLog
+                }
+               else{
+                    candyLog= "you trid to gave out a ringpop but had none.<br />" + candyLog
+               }
+            }
+            }
+            display();
+
+
+        }
+
+        function display()
+        {
+            numTwixOutput.innerHTML = numTwix;
+            numScreamEggsOutput.innerHTML = numScreamEggs;
+            numTwizzlesrOutput.innerHTML = numTwizzlers;
+            numAirheadsOutput.innerHTML = numAirheads;
+            numRingPopsOutput.innerHTML = numRingPops;
+            candyLogOutput.innerHTML = candyLog;
+        }
+    </script>
+</head>
+<body onload="initialize();">
+    Twix: <span id = 'numtwix'></span><br />
+    Cream Eggs: <span id = 'numeggs'></span><br />
+    Twizzlers: <span id = 'numtwizzlers'></span><br />
+    Airheads: <span id = 'numairheads'></span><br />
+    Ring Pops: <span id = 'numringpops'></span><br />
+    <button onclick = 'giveCandy();'>Give out Candy</button>
+
+    <hr />
+    <div id = 'candylog'></div>
+</body>
+</html>
